@@ -3,7 +3,6 @@ create database payroll_service;
 show databases;
 
 -- Requirement Second: ability to create employee payroll table
-
 use payroll_service;
 drop table employee_payroll_table  ;
 create table employee_payroll_table(
@@ -15,7 +14,6 @@ id int unsigned not null auto_increment,
  desc employee_payroll_table;
  
  -- Requirement Third: inserting the data into table
-
  insert into employee_payroll_table (
  name, 
  salary, 
@@ -26,7 +24,6 @@ id int unsigned not null auto_increment,
  ('Abhay', 2800000.00, '2020-01-14');
 
  -- Fourth Requrement: display all data
-
  select * from employee_payroll_table;
  
  -- Fifth Requirement:  getting salary of a particular employee
@@ -51,7 +48,6 @@ insert into employee_payroll_table (
  ('terisa', 1500000.00,'F', '2018-07-11'), 
  ('nita', 2800000.00,'F', '2004-03-21');
 
-
 select sum(Salary) from employee_payroll_table where Gender = 'F' group by Gender;
 select sum(Salary) from employee_payroll_table where Gender = 'M' group by Gender;
 
@@ -67,9 +63,8 @@ select max(Salary) from employee_payroll_table where Gender = 'M' group by Gende
 select count(Salary) from employee_payroll_table where Gender = 'F' group by Gender;
 select count(Salary) from employee_payroll_table where Gender = 'M' group by Gender;
 
+
 --Eighth REquirement:Ability to extend employee_payroll data to store employee information like employee phone, address and department
-
-
 create table emp_info AS
 select name 
 from employee_payroll_table;
