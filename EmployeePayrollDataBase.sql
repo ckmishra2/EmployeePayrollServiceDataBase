@@ -19,9 +19,9 @@ id int unsigned not null auto_increment,
  salary, 
  start
  ) VALUES 
- ('Chandrakala', 70000000, '2022-10-8'),
- ('Anvi', 1500000.00, '2019-10-24'), 
- ('Abhay', 2800000.00, '2020-01-14');
+ ('BILL', 70000000, '2022-10-8'),
+ ('Terisa', 1500000.00, '2019-10-24'), 
+ ('Charlie', 2800000.00, '2020-01-14');
 
  -- Fourth Requrement: display all data
  select * from employee_payroll_table;
@@ -30,14 +30,14 @@ id int unsigned not null auto_increment,
 select Salary from employee_payroll_table where EmployeeName ='Anvi';
 select * from employee_payroll_table where Start  between cast('2019-10-24' as Date ) AND DATE(NOW()) ;
 
---Sixth Requirement: ability to add gender in the existing table columns
+-- Sixth Requirement: ability to add gender in the existing table columns
 alter table employee_payroll_table add gender char(1) after salary;
 update employee_payroll_table set gender = 'M' where name ='Abhay' ;
 update employee_payroll_table set gender = 'F' where name = 'Anvi' or name ='Chandrakala';
 select * from employee_payroll_table; 
 
 
---Seventh REquirement: Ability to find sum, average, min, max
+-- Seventh REquirement: Ability to find sum, average, min, max
 insert into employee_payroll_table (
  name, 
  salary,
@@ -64,7 +64,7 @@ select count(Salary) from employee_payroll_table where Gender = 'F' group by Gen
 select count(Salary) from employee_payroll_table where Gender = 'M' group by Gender;
 
 
---Eighth REquirement:Ability to extend employee_payroll data to store employee information like employee phone, address and department
+-- Eighth REquirement:Ability to extend employee_payroll data to store employee information like employee phone, address and department
 create table emp_info AS
 select name 
 from employee_payroll_table;
@@ -92,3 +92,15 @@ CREATE TABLE employee_info(
 
  alter table employee_info ADD FOREIGN KEY (employee_id) references employee_payroll_table (id);
 select * from  employee_info; 
+
+
+-- Eleventh Requirement: Ability to add a new Employee to the payroll
+insert into employee_payroll_table (name, 
+ salary, 
+ gender,
+ start
+ ) VALUES 
+ ('Elon','M', 70000000, '2022-10-8');
+ 
+ -- Twelfth Requirement: Ability to remove employee from the payroll
+  delete name from employee_payroll_table where name = 'Elon'; 
